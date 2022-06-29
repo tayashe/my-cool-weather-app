@@ -1,0 +1,117 @@
+.container {
+  max-width: 50%;
+  margin: 20px auto;
+  padding: 20px 30px;
+  background-color: #f8f8ff;
+  box-shadow: 1px 3px 10px rgba(131, 125, 125, 0.2);
+  border-radius: 10px;
+  font-family: "Oswald", sans-serif;
+}
+h1 {
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.date {
+  font-weight: 400;
+  font-size: 25px;
+  padding: 0;
+  line-height: 30px;
+}
+.entercityform {
+  padding: 0;
+}
+.entercity {
+  padding: 40px 0;
+  text-align: right;
+}
+.row {
+  margin: 15px 0;
+}
+.inputform {
+  width: 65%;
+}
+.btn {
+  vertical-align: 0;
+  padding: 3px 12px;
+}
+.btn-secondary {
+  color: #fff;
+  background-color: green;
+  border-color: green;
+}
+.secondrow {
+  border: 1px solid #0069d9;
+  border-radius: 6px;
+  background-color: #fff;
+}
+.city,
+.country {
+  padding-left: 20px;
+}
+
+.city {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 45px;
+  padding-top: 20px;
+  text-transform: capitalize;
+}
+.temperature-main {
+  text-align: right;
+  padding: 10px 0px 20px;
+  font-size: 40px;
+  font-weight: 400;
+}
+#cel,
+#far {
+  font-size: 30px;
+  font-weight: 400;
+}
+.central-image {
+  display: block;
+  margin: -25px auto -60px;
+  width: 100%;
+}
+.secondary {
+  margin-top: 50px;
+  padding: 0;
+}
+.cloudy {
+  font-size: 25px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.thirdrow {
+  margin-top: 30px;
+}
+.card {
+  border: 1px solid #0069d9;
+}
+.card-body {
+  padding: 15px;
+}
+.day {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.weather {
+  font-weight: 300;
+  line-height: 20px;
+}
+.temperature {
+  text-align: center;
+  padding-top: 10px;
+  font-weight: 500;
+  font-size: 20px;
+}
+.firstrow,
+.secondrow,
+h1 {
+  margin: 15px;
+}
+.card-img-top {
+  margin: -40px 0 -5px;
+}

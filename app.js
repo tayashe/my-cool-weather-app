@@ -1,3 +1,4 @@
+let now = new Date();
 let date = now.getDate();
 let months = [
   "January",

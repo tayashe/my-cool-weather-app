@@ -1,6 +1,6 @@
 .container {
   max-width: 50%;
-  margin: 20px auto;
+  margin: 20px auto 10px;
   padding: 20px 30px;
   background-color: #f8f8ff;
   box-shadow: 1px 3px 10px rgba(131, 125, 125, 0.2);
@@ -114,4 +114,8 @@ h1 {
 }
 .card-img-top {
   margin: -40px 0 -5px;
+}
+.opencode {
+  max-width: 50%;
+  margin: 0 auto;
 }

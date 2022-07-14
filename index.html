@@ -23,111 +23,127 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <div class="container">
-      <h1>Weather forecast</h1>
-      <div class="row firstrow">
-        <div class="col-5 date">
-          <div class="currentday">Sunday</div>
-          <div class="currentdate">May 29, 2022</div>
-          <div class="currenttime">1.30 pm</div>
-        </div>
-        <div class="col-7 entercityform">
-          <form class="entercity">
-            <input
-              type="text"
-              class="inputform"
-              placeholder="Enter your city here"
-              autocomplete="off"
-              autofocus="on"
-            />
-            <input class="btn btn-primary" type="submit" value="Search" />
-            <button class="btn btn-secondary">Current</button>
-          </form>
-        </div>
-      </div>
-      <div class="row secondrow">
-        <div class="col-4">
-          <div class="city">Kyiv,</div>
-          <div class="country">Ukraine</div>
-          <div class="temperature-main">
-            <strong id="temp">19 </strong>
-            <a href="#" id="cel">°C</a>/<a href="#" id="far">°F</a>
+    <div class="wrapper">
+      <div class="container">
+        <h1>Weather forecast</h1>
+        <div class="row firstrow">
+          <div class="col-5 date">
+            <div class="currentday">Sunday</div>
+            <div class="currentdate">May 29, 2022</div>
+            <div class="currenttime">1.30 pm</div>
+          </div>
+          <div class="col-7 entercityform">
+            <form class="entercity">
+              <input
+                type="text"
+                class="inputform"
+                placeholder="Enter your city here"
+                autocomplete="off"
+                autofocus="on"
+              />
+              <input class="btn btn-primary" type="submit" value="Search" />
+              <button class="btn btn-secondary">Current</button>
+            </form>
           </div>
         </div>
-        <div class="col-4">
-          <img src="images/partlycloudy.svg" alt="sun" class="central-image" />
-        </div>
-        <div class="col-4 secondary">
-          <div class="cloudy">Partly cloudy</div>
-          <div class="humidity">Humidity: 29%</div>
-          <div class="wind">Wind: 4 km/hour</div>
-        </div>
-      </div>
-      <div class="row thirdrow">
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <div class="day">Monday</div>
-              <div class="weather">Cloudy</div>
-              <div class="temperature">19°C</div>
+        <div class="row secondrow">
+          <div class="col-4">
+            <div class="city">Kyiv,</div>
+            <div class="country">Ukraine</div>
+            <div class="temperature-main">
+              <strong id="temp">19</strong
+              ><span class="units"
+                ><a href="#" id="cel">°C/</a><a href="#" id="far">°F</a></span
+              >
             </div>
-            <img src="images/cloudy.svg" class="card-img-top" alt="monday" />
           </div>
-        </div>
-
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <div class="day">Tuesday</div>
-              <div class="weather">Sunny</div>
-              <div class="temperature">22°C</div>
-            </div>
-            <img src="images/day.svg" class="card-img-top" alt="tuesday" />
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <div class="day">Wednesday</div>
-              <div class="weather">Rainy</div>
-              <div class="temperature">18°C</div>
-            </div>
-            <img src="images/rainy.svg" class="card-img-top" alt="wednesday" />
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <div class="day">Thursday</div>
-              <div class="weather">Thunder</div>
-              <div class="temperature">18°C</div>
-            </div>
-            <img src="images/thunder.svg" class="card-img-top" alt="thirsday" />
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <div class="day">Friday</div>
-              <div class="weather">Partly cloudly</div>
-              <div class="temperature">20°C</div>
-            </div>
+          <div class="col-4">
             <img
               src="images/partlycloudy.svg"
-              class="card-img-top"
-              alt="friday"
+              alt="sun"
+              class="central-image"
             />
+          </div>
+          <div class="col-4 secondary">
+            <div class="cloudy">Partly cloudy</div>
+            <div class="humidity">Humidity: 29%</div>
+            <div class="wind">Wind: 4 km/hour</div>
+          </div>
+        </div>
+        <div class="row thirdrow">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="day">Monday</div>
+                <div class="weather">Cloudy</div>
+                <div class="temperature">19°C</div>
+              </div>
+              <img src="images/cloudy.svg" class="card-img-top" alt="monday" />
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="day">Tuesday</div>
+                <div class="weather">Sunny</div>
+                <div class="temperature">22°C</div>
+              </div>
+              <img src="images/day.svg" class="card-img-top" alt="tuesday" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="day">Wednesday</div>
+                <div class="weather">Rainy</div>
+                <div class="temperature">18°C</div>
+              </div>
+              <img
+                src="images/rainy.svg"
+                class="card-img-top"
+                alt="wednesday"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="day">Thursday</div>
+                <div class="weather">Thunder</div>
+                <div class="temperature">18°C</div>
+              </div>
+              <img
+                src="images/thunder.svg"
+                class="card-img-top"
+                alt="thirsday"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="day">Friday</div>
+                <div class="weather">Partly cloudly</div>
+                <div class="temperature">20°C</div>
+              </div>
+              <img
+                src="images/partlycloudy.svg"
+                class="card-img-top"
+                alt="friday"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="opencode">
-      <a
-        href="https://github.com/tayashe/my-cool-weather-app"
-        id="openSource"
-        target="_blank"
-        >Open-source code</a
-      >, by Taya Shestoukh
+      <small class="opencode">
+        <a
+          href="https://github.com/tayashe/my-cool-weather-app"
+          id="openSource"
+          target="_blank"
+          >Open-source code</a
+        >, by Taya Shestoukh
+      </small>
     </div>
     <script src="app.js"></script>
   </body>

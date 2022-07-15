@@ -54,12 +54,18 @@ function showWeather(response) {
   let wind = Math.round(response.data.wind.speed);
   let currentCity = document.querySelector(".city");
   let city = response.data.name;
+  let iconElement = document.querySelector("#icon");
   currentTemperature.innerHTML = `${temperature}`;
   countryName.innerHTML = `${country}`;
   cloudyState.innerHTML = `${cloudy}`;
   humidityState.innerHTML = `Humidity: ${humidity}%`;
   windSpeed.innerHTML = `Wind: ${wind} km/hour`;
   currentCity.innerHTML = `${city}`;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function search(event) {

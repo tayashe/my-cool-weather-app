@@ -83,6 +83,8 @@ h1 {
 .cloudy {
   font-size: 25px;
   font-weight: 400;
+}
+.cloudy:first-letter {
   text-transform: capitalize;
 }
 .thirdrow {

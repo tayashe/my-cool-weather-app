@@ -51,7 +51,7 @@ function showWeather(response) {
   let humidityState = document.querySelector(".humidity");
   let humidity = response.data.main.humidity;
   let windSpeed = document.querySelector(".wind");
-  let wind = response.data.wind.speed;
+  let wind = Math.round(response.data.wind.speed);
   let currentCity = document.querySelector(".city");
   let city = response.data.name;
   currentTemperature.innerHTML = `${temperature}`;

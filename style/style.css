@@ -69,7 +69,16 @@ h1 {
   font-size: 20px;
   font-weight: 400;
 }
-.central-image {
+.active {
+  color: black;
+  cursor: default;
+}
+.active:hover {
+  text-decoration: none;
+  color: black;
+}
+
+#icon {
   display: block;
   width: 128px;
   height: 128px;

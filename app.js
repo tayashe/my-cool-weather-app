@@ -55,6 +55,7 @@ function showWeather(response) {
   let currentCity = document.querySelector(".city");
   let city = response.data.name;
   let iconElement = document.querySelector("#icon");
+  celTemp = response.data.main.temp;
   currentTemperature.innerHTML = `${temperature}`;
   countryName.innerHTML = `${country}`;
   cloudyState.innerHTML = `${cloudy}`;
@@ -88,8 +89,35 @@ function currentCityWeather() {
   navigator.geolocation.getCurrentPosition(currentPositionWeather);
 }
 
+function showFarTemp(event) {
+  event.preventDefault();
+  celLink.classList.remove("active");
+  farLink.classList.add("active");
+  let farTemp = (celTemp * 9) / 5 + 32;
+  let tempElement = document.querySelector("#temp");
+  tempElement.innerHTML = Math.round(farTemp);
+}
+
+function showCelTemp(event) {
+  event.preventDefault();
+  celLink.classList.add("active");
+  farLink.classList.remove("active");
+  let tempElement = document.querySelector("#temp");
+  tempElement.innerHTML = Math.round(celTemp);
+}
+
+let celTemp = null;
+
 let searchForm = document.querySelector(".entercity");
 searchForm.addEventListener("submit", search);
 
 let currentButton = document.querySelector(".btn-secondary");
 currentButton.addEventListener("click", currentCityWeather);
+
+let farLink = document.querySelector("#far");
+farLink.addEventListener("click", showFarTemp);
+
+let celLink = document.querySelector("#cel");
+celLink.addEventListener("click", showCelTemp);
+
+search("Kyiv");

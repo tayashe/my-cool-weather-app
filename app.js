@@ -40,6 +40,39 @@ let dateSecondRow = document.querySelector(".currentdate");
 dateSecondRow.innerHTML = `${month} ${date}, ${year}`;
 let dateThirdRow = document.querySelector(".currenttime");
 dateThirdRow.innerHTML = `${hour}:${minute}`;
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row thirdrow">`;
+  let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+              <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <div class="day">${day}</div>
+                  <div class="weather">Cloudy</div>
+                  <div class="temperature">
+                    <span class="weather-forecast-temperature-max">19° </span>
+                    <span class="weather-forecast-temperature-min">12° </span>
+                  </div>
+                </div>
+                <img
+                  src="images/cloudy.svg"
+                  class="card-img-top"
+                  alt="monday"
+                />
+              </div>
+              </div>
+           
+  `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showWeather(response) {
   console.log(response);
   let currentTemperature = document.querySelector("#temp");
@@ -55,6 +88,7 @@ function showWeather(response) {
   let currentCity = document.querySelector(".city");
   let city = response.data.name;
   let iconElement = document.querySelector("#icon");
+
   celTemp = response.data.main.temp;
   currentTemperature.innerHTML = `${temperature}`;
   countryName.innerHTML = `${country}`;
@@ -105,6 +139,8 @@ function showCelTemp(event) {
   let tempElement = document.querySelector("#temp");
   tempElement.innerHTML = Math.round(celTemp);
 }
+
+displayForecast();
 
 let celTemp = null;
 

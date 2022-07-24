@@ -41,27 +41,48 @@ dateSecondRow.innerHTML = `${month} ${date}, ${year}`;
 let dateThirdRow = document.querySelector(".currenttime");
 dateThirdRow.innerHTML = `${hour}:${minute}`;
 
+function formatDay(date) {
+  let now = new Date(date * 1000);
+  let day = now.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row thirdrow">`;
-  let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
               <div class="col">
               <div class="card">
                 <div class="card-body">
-                  <div class="day">${day}</div>
+                  <div class="day">${formatDay(forecastDay.dt)}</div>
                   <div class="weather">Cloudy</div>
                   <div class="temperature">
-                    <span class="weather-forecast-temperature-max">19° </span>
-                    <span class="weather-forecast-temperature-min">12° </span>
+                    <span class="weather-forecast-temperature-max">${Math.round(
+                      forecastDay.temp.max
+                    )}° </span>
+                    <span class="weather-forecast-temperature-min">${Math.round(
+                      forecastDay.temp.min
+                    )}° </span>
                   </div>
                 </div>
                 <img
-                  src="images/cloudy.svg"
+                  src="http://openweathermap.org/img/wn/${
+                    forecastDay.weather[0].icon
+                  }@2x.png"
                   class="card-img-top"
                   alt="monday"
                 />
@@ -69,6 +90,7 @@ function displayForecast(response) {
               </div>
            
   `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
@@ -112,12 +134,16 @@ function showWeather(response) {
   getForecast(response.data.coord);
 }
 
-function search(event) {
+function search(city) {
+  let apiKey = "daa9bbc25db2c0ed05d28a96cf2d42f7";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showWeather);
+}
+
+function handleSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector(".inputform");
-  let apiKey = "daa9bbc25db2c0ed05d28a96cf2d42f7";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showWeather);
+  search(searchInput.value);
 }
 
 function currentPositionWeather(position) {
@@ -152,7 +178,7 @@ function showCelTemp(event) {
 let celTemp = null;
 
 let searchForm = document.querySelector(".entercity");
-searchForm.addEventListener("submit", search);
+searchForm.addEventListener("submit", handleSubmit);
 
 let currentButton = document.querySelector(".btn-secondary");
 currentButton.addEventListener("click", currentCityWeather);
@@ -162,3 +188,5 @@ farLink.addEventListener("click", showFarTemp);
 
 let celLink = document.querySelector("#cel");
 celLink.addEventListener("click", showCelTemp);
+
+search("Kyiv");

@@ -41,7 +41,8 @@ dateSecondRow.innerHTML = `${month} ${date}, ${year}`;
 let dateThirdRow = document.querySelector(".currenttime");
 dateThirdRow.innerHTML = `${hour}:${minute}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row thirdrow">`;
   let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
@@ -72,7 +73,13 @@ function displayForecast() {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "e0a5a97de9a0b7a951e9d154a8f9bad8";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 function showWeather(response) {
   console.log(response);
   let currentTemperature = document.querySelector("#temp");
@@ -101,6 +108,8 @@ function showWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function search(event) {
@@ -140,8 +149,6 @@ function showCelTemp(event) {
   tempElement.innerHTML = Math.round(celTemp);
 }
 
-displayForecast();
-
 let celTemp = null;
 
 let searchForm = document.querySelector(".entercity");
@@ -155,5 +162,3 @@ farLink.addEventListener("click", showFarTemp);
 
 let celLink = document.querySelector("#cel");
 celLink.addEventListener("click", showCelTemp);
-
-search("Kyiv");

@@ -57,6 +57,7 @@ function formatDay(date) {
 }
 
 function displayForecast(response) {
+  console.log(response.data.daily);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row thirdrow">`;
@@ -69,7 +70,7 @@ function displayForecast(response) {
               <div class="card">
                 <div class="card-body">
                   <div class="day">${formatDay(forecastDay.dt)}</div>
-                  <div class="weather">Cloudy</div>
+                  <div class="weather">${forecastDay.weather[0].main}</div>
                   <div class="temperature">
                     <span class="weather-forecast-temperature-max">${Math.round(
                       forecastDay.temp.max
@@ -118,7 +119,6 @@ function showWeather(response) {
   let city = response.data.name;
   let iconElement = document.querySelector("#icon");
 
-  celTemp = response.data.main.temp;
   currentTemperature.innerHTML = `${temperature}`;
   countryName.innerHTML = `${country}`;
   cloudyState.innerHTML = `${cloudy}`;
@@ -158,35 +158,10 @@ function currentCityWeather() {
   navigator.geolocation.getCurrentPosition(currentPositionWeather);
 }
 
-function showFarTemp(event) {
-  event.preventDefault();
-  celLink.classList.remove("active");
-  farLink.classList.add("active");
-  let farTemp = (celTemp * 9) / 5 + 32;
-  let tempElement = document.querySelector("#temp");
-  tempElement.innerHTML = Math.round(farTemp);
-}
-
-function showCelTemp(event) {
-  event.preventDefault();
-  celLink.classList.add("active");
-  farLink.classList.remove("active");
-  let tempElement = document.querySelector("#temp");
-  tempElement.innerHTML = Math.round(celTemp);
-}
-
-let celTemp = null;
-
 let searchForm = document.querySelector(".entercity");
 searchForm.addEventListener("submit", handleSubmit);
 
 let currentButton = document.querySelector(".btn-secondary");
 currentButton.addEventListener("click", currentCityWeather);
-
-let farLink = document.querySelector("#far");
-farLink.addEventListener("click", showFarTemp);
-
-let celLink = document.querySelector("#cel");
-celLink.addEventListener("click", showCelTemp);
 
 search("Kyiv");
